@@ -1,5 +1,36 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+<h1>
+    So many days left !
+</h1>
 
-Welcome to your new app.
+<label for="NumberOfYearsLeft">
+    How many more years do you expect to live ? 
+    <br/>
+    (note: life expectancy in first world countries is about 80 years old. Just substract your current age, you dumb-dumb !
+    <br/>
+    <input id="NumberOfYearsLeft" @bind="NumberOfYearsLeft" @bind:event="oninput"/>
+</label>
+
+@if (DaysLeft() > 0)
+{
+    <div>
+        You have @DaysLeft() days left.<br/>
+        <hr/>
+        You only have a whole life ahead of you<br/>
+        No matter how long or short it may seem<br/>
+        How much will have been done is up to you<br/>
+        Why not learn to play the theremin ?
+    </div>
+}
+
+@code {
+
+    public int NumberOfYearsLeft { get; set; }
+
+    public int DaysLeft()
+    {
+        return NumberOfYearsLeft * 365;
+    }
+
+}
