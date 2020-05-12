@@ -1,32 +1,39 @@
 ﻿@page "/"
+<div class="contentBlock">
+    <h1 class="primaryColor">
+        So many days left !
+    </h1>
 
-<h1>
-    So many days left !
-</h1>
+    <label id="NumberOfYearsLeftLabel" for="NumberOfYearsLeft" class="secondaryColor">
+        Fill in how many more years you expect to live:
+        <input id="NumberOfYearsLeft" @bind="NumberOfYearsLeft" @bind:event="oninput"
+               onkeypress="this.style.width = ((this.value.length + 1) * 8) + 'px';"
+               onkeydown="this.style.width = ((this.value.length + 1) * 8) + 'px';"
+               onkeyup="this.style.width = ((this.value.length + 1) * 8) + 'px';"
+               onchange="this.style.width = ((this.value.length + 1) * 8) + 'px';"/>
+        <br/>
+        (note: life expectancy in first world countries is about 80 years old. Just substract your current age, you dumb-dumb !
+    </label>
+</div>
+<div class="contentBlock">
+    @if (DaysLeft() > 0)
+    {
+        <div id="numberOfDaysLeftSentence" class="primaryColor">
+            You have @DaysLeft() days left.<br/>
+        </div>
+        <div id="poetryBlock" class="secondaryColor">
 
-<label for="NumberOfYearsLeft">
-    How many more years do you expect to live ? 
-    <br/>
-    (note: life expectancy in first world countries is about 80 years old. Just substract your current age, you dumb-dumb !
-    <br/>
-    <input id="NumberOfYearsLeft" @bind="NumberOfYearsLeft" @bind:event="oninput"/>
-</label>
-
-@if (DaysLeft() > 0)
-{
-    <div>
-        You have @DaysLeft() days left.<br/>
-        <hr/>
-        You only have a whole life ahead of you<br/>
-        No matter how long or short it may seem<br/>
-        How much will have been done is up to you<br/>
-        Why not learn to play the theremin ?
-    </div>
-}
+            You only have a whole life ahead of you<br/>
+            No matter how long or short it may seem<br/>
+            How much will have been done is up to you<br/>
+            Why not learn to play the <a href="https://youtu.be/ajM4vYCZMZk?t=81">theremin</a> ?
+        </div>
+    }
+</div>
 
 @code {
 
-    public int NumberOfYearsLeft { get; set; }
+    public int NumberOfYearsLeft { get; set; } = 0;
 
     public int DaysLeft()
     {
