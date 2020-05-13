@@ -42,4 +42,4 @@ jobs:
         username: ${{ secrets.SshUsername }}
         password: ${{ secrets.SshPassword }}
         port: 22
-        script: docker stop SoManyDaysLeft || true;docker rm SoManyDaysLeft || true; docker pull registry.gitlab.com/wndrr/websites/SoManyDaysLeft; docker run --name=SoManyDaysLeft -d -e VIRTUAL_HOST=SoManyDaysLeft.viales.fr -p 7432:80 registry.gitlab.com/wndrr/websites/so-many-days-left          
+        script: docker stop SoManyDaysLeft || true;docker rm SoManyDaysLeft || true; docker pull registry.gitlab.com/wndrr/websites/SoManyDaysLeft; docker run --name=SoManyDaysLeft -d -e VIRTUAL_HOST=somanydaysleft.life -p 7432:80 registry.gitlab.com/wndrr/websites/so-many-days-left          
